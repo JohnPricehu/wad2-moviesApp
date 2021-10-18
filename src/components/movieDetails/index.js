@@ -36,8 +36,47 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
   return (
     <>
-      ...... as before .......
-     <Fab
+      <Typography variant="h5" component="h3">
+        Overview
+      </Typography>
+
+      <Typography variant="h6" component="p">
+        {movie.overview}
+      </Typography>
+
+      <Paper component="ul" className={classes.root}>
+        <li>
+          <Chip label="Genres" className={classes.chip} color="primary" />
+        </li>
+        {movie.genres.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>
+      <Paper component="ul" className={classes.root}>
+        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip
+          icon={<MonetizationIcon />}
+          label={`${movie.revenue.toLocaleString()}`}
+        />
+        <Chip
+          icon={<StarRate />}
+          label={`${movie.vote_average} (${movie.vote_count}`}
+        />
+        <Chip label={`Released: ${movie.release_date}`} />
+      </Paper><Paper component="ul" className={classes.root}>
+        <li>
+          <Chip label="Production Countries" className={classes.chip} color="primary" />
+        </li>
+        {movie.production_countries.map((pc) => (
+          <li key={pc.name}>
+            <Chip label={pc.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>
+
+      <Fab
         color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
@@ -52,5 +91,4 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
     </>
   );
 };
-
 export default  MovieDetails ;
