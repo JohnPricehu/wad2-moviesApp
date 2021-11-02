@@ -109,4 +109,20 @@ describe("Base test", () => {
      });
    });
 
+   describe("Add to favorite", () => {
+    beforeEach(() => {
+      cy.get("#filled-search").clear();
+      cy.get("#genre-select").click();
+      cy.get("li").contains("All").click();
+      cy.get("button[aria-label='add to favorites']").eq(0).click();
+      cy.get("button[aria-label='add to favorites']").eq(1).click();
+    });
+    it("It should display an avatar at the top of the movie card and add it to the Favourite movies page. ", () => {
+      cy.get(".MuiCardHeader-avatar");
+      cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+      cy.get("p").contains(movies[0].title);
+      cy.get("p").contains(movies[1].title);
+    });
+});
+
   
