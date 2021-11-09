@@ -26,4 +26,5 @@ e2etest:
     stage: test
     script:
       - echo "Run tests in headless mode"
+      - npm i browser-sync
       - npm run start:ci
