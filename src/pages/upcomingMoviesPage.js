@@ -6,7 +6,7 @@ import {getUpcomingMovies} from '../api/tmdb-api'
 import AddToPlaylistAddIcon from '../components/cardIcons/addToWatch'
 
 const UpcomingMoviesPage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('discover', getUpcomingMovies)
+  const {  data, error, isLoading, isError }  = useQuery('discover2', getUpcomingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -18,9 +18,9 @@ const UpcomingMoviesPage = (props) => {
   const movies = data.results;
 
   // Redundant, but necessary to avoid app crashing.
-  // const favorites = movies.filter(m => m.favorite)
-  // localStorage.setItem('favorites', JSON.stringify(favorites))
-  // const addToFavorites = (movieId) => true 
+  const towatches = movies.filter(m => m.towatch)
+  localStorage.setItem('towatches', JSON.stringify(towatches))
+  const addToWatches = (movieId) => true 
 
   return (
     <PageTemplate
