@@ -20,7 +20,7 @@ const UpcomingMoviesPage = (props) => {
   // Redundant, but necessary to avoid app crashing.
   const towatches = movies.filter(m => m.towatch)
   localStorage.setItem('towatches', JSON.stringify(towatches))
-  const addToWatches = (movieId) => true 
+  // const addToWatches = (movieId) => true 
 
   return (
     <PageTemplate
