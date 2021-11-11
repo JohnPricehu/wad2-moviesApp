@@ -1,7 +1,7 @@
 let movieId = 335983; // The movie Venom
 let movie;
 let images;
-let reviews;
+// let reviews;
 
 describe("Movie Details Page", () => {
   before(() => {
