@@ -5,6 +5,7 @@ image: cypress/browsers:node12.0.0-chrome73
 stages:
   - install
   - build
+  - run
   - test
 
 # Jobs 
@@ -34,14 +35,19 @@ bundle_app:
   script:
     - npm run build
 
-
 build_jobX:
   stage: build
   only:
     - develop
   script:
     - echo "build job X on demoBranch works"
-    
+
+run_jobX:
+stage: run
+  only:
+    - main
+  script:
+    - echo "Run exercise job X"
 
 test_jobX:
   stage: test
@@ -50,7 +56,6 @@ test_jobX:
     - branchX
   script:
     - echo "Run test job X"
-
 
 e2etest:    
     stage: test
