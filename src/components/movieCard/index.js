@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 // import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import img from '../../images/film-poster-placeholder.png'
@@ -65,7 +65,7 @@ export default function MovieCard({ movie, action }) {
           </Avatar>
         ) : (movie.towatch ? (
           <Avatar className={classes.avatar}>
-            <PlaylistAddIcon />
+            <PlaylistAddCheckIcon />
           </Avatar>
         ) : null)
       }

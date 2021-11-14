@@ -8,7 +8,7 @@ const AddToPlaylistAddIcon = ({ movie }) => {
 
   const handleAddToWatches = (e) => {
     e.preventDefault();
-    context.addToWatches(movie);
+    context.addTowatches(movie);
   };
   return (
     <IconButton aria-label="add towatch" onClick={handleAddToWatches}>
