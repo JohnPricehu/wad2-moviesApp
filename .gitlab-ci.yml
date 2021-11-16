@@ -31,11 +31,11 @@ install_dependencies:
     - npm ci --cache .npm --prefer-offline
 
 bundle_app:
-stage: build
-script:
+  stage: build
+  script:
   - npm run build
-artifacts:
-  paths:
+  artifacts:
+    paths:
     - build/
 
 # build_jobX:
