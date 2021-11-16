@@ -31,31 +31,34 @@ install_dependencies:
     - npm ci --cache .npm --prefer-offline
 
 bundle_app:
-  stage: build
-  script:
-    - npm run build
+stage: build
+script:
+  - npm run build
+artifacts:
+  paths:
+    - build/
 
-build_jobX:
-  stage: build
-  only:
-    - develop
-  script:
-    - echo "build job X on demoBranch works"
+# build_jobX:
+#   stage: build
+#   only:
+#     - develop
+#   script:
+#     - echo "build job X on demoBranch works"
 
-run_jobX:
-stage: run
-  only:
-    - main
-  script:
-    - echo "Run exercise job X"
+# run_jobX:
+# stage: run
+#   only:
+#     - main
+#   script:
+#     - echo "Run exercise job X"
 
-test_jobX:
-  stage: test
-  only:
-    - main
-    - branchX
-  script:
-    - echo "Run test job X"
+# test_jobX:
+#   stage: test
+#   only:
+#     - main
+#     - branchX
+#   script:
+#     - echo "Run test job X"
 
 e2etest:    
     stage: test
