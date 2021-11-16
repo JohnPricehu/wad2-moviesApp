@@ -33,7 +33,10 @@ install_dependencies:
 bundle_app:
   stage: build
   script:
-    - npm run build
+  - npm run build
+  artifacts:
+    paths:
+    - build/
 
 build_jobX:
   stage: build
@@ -43,7 +46,7 @@ build_jobX:
     - echo "build job X on demoBranch works"
 
 run_jobX:
-stage: run
+  stage: run
   only:
     - main
   script:
