@@ -1,13 +1,8 @@
 import React from "react";
-// import React, { useState, useEffect } from "react";
 import PersonHeader from "../headerPerson";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import { getMovieImages } from "../../api/tmdb-api";
-import { useQuery } from "react-query";
-import Spinner from '../spinner'
 
 const useStyles = makeStyles((theme) => ({
   root: {

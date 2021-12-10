@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
         <NavigationIcon />
         Reviews
       </Fab>
-      <Fab 
+      {/* <Fab 
         variant="extended"
         className={classes.fab3}>
         <NavigationIcon sx={{ mr: 1 }} />
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
                 >
           Credits
           </Link>
-        </Fab>
+        </Fab> */}
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)} >
         <MovieReviews movie={movie} />        
       </Drawer>

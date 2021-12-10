@@ -11,6 +11,11 @@ import TableRow from "@material-ui/core/TableRow";
 import { Link } from "react-router-dom";
 import { getMovieCredits } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
+import MovieSimilars from "../movieSimilar";
+import Fab from "@material-ui/core/Fab";
+import Drawer from "@material-ui/core/Drawer";
+import NavigationIcon from "@material-ui/icons/Navigation";
+
 
 
 
@@ -26,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
     chip: {
       margin: theme.spacing(0.5),
     },
+    fab2: {
+        position: "fixed",
+        bottom: theme.spacing(2),
+        left: theme.spacing(20),
+      },
   }));
 
 // export default ({ movie }) => {
@@ -40,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieCredits({ movie }) {
         const classes = useStyles();
         const [credits, setCredit]= useState([]);
+        const [drawerOpen, setDrawerOpen] = useState(false);
       
         useEffect(() => {
             getMovieCredits(movie.id).then(credits => {
@@ -89,6 +100,15 @@ export default function MovieCredits({ movie }) {
           ))}
         </TableBody>
       </Table>
+      <Fab variant="extended"
+        className={classes.fab2}
+        onClick={() =>setDrawerOpen(true)}>
+        <NavigationIcon sx={{ mr: 1 }} />
+            Similar Movies
+        </Fab>
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
+        <MovieSimilars movie={movie} />
+      </Drawer>
     </TableContainer>       
     </>
   );

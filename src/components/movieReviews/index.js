@@ -13,7 +13,7 @@ import { excerpt } from "../../util";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import NavigationIcon from "@material-ui/icons/Navigation";
-import MovieSimilars from "../movieSimilar";
+import MovieCredits from "../movieCredits";
 
 const useStyles = makeStyles((theme) =>({
   table: {
@@ -76,10 +76,10 @@ export default function MovieReviews({ movie }) {
         className={classes.fab2}
         onClick={() =>setDrawerOpen(true)}>
         <NavigationIcon sx={{ mr: 1 }} />
-          Similar movies
+          Actor
         </Fab>
-      <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
-        <MovieSimilars movie={movie} />
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
+        <MovieCredits movie={movie} />
       </Drawer>
     </TableContainer>
   );
