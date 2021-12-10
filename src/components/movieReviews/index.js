@@ -74,8 +74,7 @@ export default function MovieReviews({ movie }) {
       </Table>
       <Fab variant="extended"
         className={classes.fab2}
-        onClick={() =>setDrawerOpen(true)}
-        id = '2'>
+        onClick={() =>setDrawerOpen(true)}>
         <NavigationIcon sx={{ mr: 1 }} />
           Similar movies
         </Fab>

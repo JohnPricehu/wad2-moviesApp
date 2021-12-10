@@ -10,7 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews";
-// import MovieSimilars from "../movieSimilar";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -31,11 +32,12 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
-  fab2: {
+  fab3: {
     position: "fixed",
-    bottom: theme.spacing(2),
-    right: theme.spacing(20),
+    bottom: theme.spacing(10),
+    right: theme.spacing(2),
   },
+
 }));
 
   const MovieDetails = ({ movie }) => {  // Don't miss this!
@@ -89,25 +91,24 @@ const useStyles = makeStyles((theme) => ({
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
         className={classes.fab1}
-        id = '1'
       >
         <NavigationIcon />
         Reviews
       </Fab>
-      
-
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)} >
-        <MovieReviews movie={movie} />
-        {/* <Fab variant="extended"
-        className={classes.fab2}
-        onClick={() =>setDrawerOpen(true)}
-        id = '2'>
+      <Fab 
+        variant="extended"
+        className={classes.fab3}>
         <NavigationIcon sx={{ mr: 1 }} />
-          Similar movies
+        <Link
+                  to={{
+                    pathname: `/movies/${movie.id}/credits`,
+                  }}
+                >
+          Credits
+          </Link>
         </Fab>
-      <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
-        <MovieSimilars movie={movie} />
-      </Drawer> */}
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)} >
+        <MovieReviews movie={movie} />        
       </Drawer>
       
         

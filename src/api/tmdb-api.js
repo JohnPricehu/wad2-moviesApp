@@ -129,13 +129,12 @@ export const getTopRatedMovies = () => {
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
       )
       .then((res) => res.json())
-      .then((json) => {
-        return json.results;
-      });
+      .then(json => {return json});
   };
 
-  export const getPerson = id => {
+  export const getPerson = (id) => {
     return fetch(
-      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
-    ).then(res => res.json());
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      )
+      .then((res) => res.json())
   };

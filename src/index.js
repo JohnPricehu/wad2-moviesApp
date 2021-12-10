@@ -19,7 +19,6 @@ import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
 
 
 
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

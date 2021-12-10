@@ -31,7 +31,7 @@ const PersonDetailsPage = (props) => {
           </PageTemplate>
         </>
       ) : (
-        <p>Waiting for movie details</p>
+        <p>Waiting for person details</p>
       )}
     </>
   );
