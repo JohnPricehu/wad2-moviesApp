@@ -9,7 +9,10 @@ import Fab from "@material-ui/core/Fab";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+// import MovieSimilars from "../movieSimilar";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,14 +26,19 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: theme.spacing(0.5),
   },
-  fab: {
+  fab1: {
     position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
+  fab2: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(20),
+  },
 }));
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+  const MovieDetails = ({ movie }) => {  // Don't miss this!
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -80,14 +88,29 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
-        className={classes.fab}
+        className={classes.fab1}
+        id = '1'
       >
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      
+
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)} >
         <MovieReviews movie={movie} />
+        {/* <Fab variant="extended"
+        className={classes.fab2}
+        onClick={() =>setDrawerOpen(true)}
+        id = '2'>
+        <NavigationIcon sx={{ mr: 1 }} />
+          Similar movies
+        </Fab>
+      <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
+        <MovieSimilars movie={movie} />
+      </Drawer> */}
       </Drawer>
+      
+        
     </>
   );
 };

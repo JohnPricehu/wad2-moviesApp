@@ -10,16 +10,26 @@ import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { getMovieReviews } from "../../api/tmdb-api";
 import { excerpt } from "../../util";
+import Fab from "@material-ui/core/Fab";
+import Drawer from "@material-ui/core/Drawer";
+import NavigationIcon from "@material-ui/icons/Navigation";
+import MovieSimilars from "../movieSimilar";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
   table: {
     minWidth: 550,
   },
-});
+  fab2: {
+    position: "fixed",
+    bottom: theme.spacing(2),
+    right: theme.spacing(20),
+  },
+}));
 
 export default function MovieReviews({ movie }) {
   const classes = useStyles();
   const [reviews, setReviews] = useState([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     getMovieReviews(movie.id).then((reviews) => {
@@ -62,6 +72,16 @@ export default function MovieReviews({ movie }) {
           ))}
         </TableBody>
       </Table>
+      <Fab variant="extended"
+        className={classes.fab2}
+        onClick={() =>setDrawerOpen(true)}
+        id = '2'>
+        <NavigationIcon sx={{ mr: 1 }} />
+          Similar movies
+        </Fab>
+      <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
+        <MovieSimilars movie={movie} />
+      </Drawer>
     </TableContainer>
   );
 }
