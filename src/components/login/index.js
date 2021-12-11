@@ -1,11 +1,14 @@
 import "./login.css";
 import React,{useState, useEffect} from "react";
 // Add the Firebase services that you want to use
-// import auth from "../../firebase";
-import Login from "../../pages/LoginPage";
-import App from "../../index";
+import fire from "./fire";
+// import Login from "./Login";
+// import Hero from "./Hero";
 import { withRouter } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut } from "firebase/auth";
+import App from "../../index";
+// import { Link, withRouter } from 'react-router-dom';
+// import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut } from "firebase/auth";
+import Login from "../../pages/LoginPage";
 
 export const LoginApp=() =>{
     const [user,setUser]=useState("");
@@ -23,11 +26,12 @@ export const LoginApp=() =>{
         setEmailError('');
         setPasswordError('');
     }
-    const auth = getAuth();
 
     const handleLogin =()=>{
         clearErrors();
-        signInWithEmailAndPassword(auth,email,password)
+        fire
+           .auth()
+           .signInWithEmailAndPassword(email,password)
            .catch(
                 err=>{
                   switch(err.code){
@@ -47,7 +51,9 @@ export const LoginApp=() =>{
 
     const handleSignup =() =>{
         clearErrors();
-        createUserWithEmailAndPassword(auth,email,password)
+        fire
+        .auth()
+        .createUserWithEmailAndPassword(email,password)
         .catch(
             err=>{
                switch(err.code){
@@ -65,11 +71,11 @@ export const LoginApp=() =>{
     };
     
     const handleLogout =() =>{
-        signOut(auth);
+        fire.auth().signOut();
     };
 
     const authListener = () => {
-        onAuthStateChanged(auth,user=>{
+        fire.auth().onAuthStateChanged((user)=>{
             if (user){
                 clearInputs();
                 setUser(user);
@@ -83,7 +89,6 @@ export const LoginApp=() =>{
         authListener();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-
     return(
         <div className = "App">
             {user ? ( 
