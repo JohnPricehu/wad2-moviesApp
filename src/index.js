@@ -15,6 +15,10 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustwatchMoviesPage from "./pages/mustWatchMoviesPage"; 
 import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
+// import AuthProvider from "./contexts/authContext";
+import LoginPage from "./pages/LoginPage";
+// import SignUpPage from "./pages/signUpPage";
+
 
 
 
@@ -36,7 +40,10 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
             {" "}
+      {/* <AuthProvider> */}
       <Switch>
+        {/* <Route exact path="/movies/signup" component={SignUpPage} /> */}
+        <Route exact path="/movies/login" component={LoginPage} />
         <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
         <Route exact path="/movies/now-playing" component={NowPlayingMoviesPage} />
         <Route exact path="/movies/mustwatch" component={MustwatchMoviesPage} />
@@ -49,11 +56,12 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Redirect from="*" to="/" />
       </Switch>
+      {/* </AuthProvider> */}
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
-
+export default App;
 ReactDOM.render(<App />, document.getElementById("root"));

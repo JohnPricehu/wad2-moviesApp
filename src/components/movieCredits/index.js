@@ -106,7 +106,7 @@ export default function MovieCredits({ movie }) {
         <NavigationIcon sx={{ mr: 1 }} />
             Similar Movies
         </Fab>
-      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
+      <Drawer anchor="bottom" open={drawerOpen} onClose={() => setDrawerOpen(false)} closable>
         <MovieSimilars movie={movie} />
       </Drawer>
     </TableContainer>       
