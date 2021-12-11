@@ -1,14 +1,10 @@
 import "./login.css";
 import React,{useState, useEffect} from "react";
 // Add the Firebase services that you want to use
-import fire from "./fire";
-// import Login from "./Login";
-// import Hero from "./Hero";
-import { withRouter } from 'react-router-dom';
-import App from "../../index";
-// import { Link, withRouter } from 'react-router-dom';
-// import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut } from "firebase/auth";
+import fire from "../../firebase";
 import Login from "../../pages/LoginPage";
+import App from "../../index1";
+import { withRouter } from 'react-router-dom';
 
 export const LoginApp=() =>{
     const [user,setUser]=useState("");
@@ -89,6 +85,7 @@ export const LoginApp=() =>{
         authListener();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+
     return(
         <div className = "App">
             {user ? ( 
