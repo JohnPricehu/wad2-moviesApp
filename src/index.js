@@ -17,7 +17,7 @@ import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
 import SignUpPage from "./pages/signupPage";
 import LogInPage from "./pages/loginPage";
-import LogOutPage from "./pages/logoutPage";
+import UserFilePage from "./pages/userFilePage";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -42,7 +42,7 @@ export const App =()=>{
         <MoviesContextProvider>
             {" "}
       <Switch>
-        <Route path="/account" component={LogOutPage} />
+        <Route path="/userfile" component={UserFilePage} />
         <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/login" component={LogInPage} />
         <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />

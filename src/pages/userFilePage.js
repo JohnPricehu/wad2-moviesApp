@@ -1,15 +1,15 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import LogOut from "../components/logout"
+import Userfile from "../components/userfile"
 import SiteHeader from "../components/siteHeader"
 
-const logOutPage = (props) => {
+const userFilePage = (props) => {
   return (
     <>
     <SiteHeader/>
-      <LogOut/>
+      <Userfile/>
       </>
   );
 };
 
-export default logOutPage;
+export default userFilePage;
