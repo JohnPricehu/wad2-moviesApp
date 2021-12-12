@@ -73,6 +73,10 @@ describe("Movie Details Page", () => {
             cy.get(".MuiGrid-container").find("button").click();
             cy.get(".MuiTable-root").find("tr").contains(reviews[0].author);
     });
-    
+      it("should display the full review details in a new page", () => {
+            cy.get(".MuiGrid-container").find("button").click();
+            cy.get(".MuiTable-root").find("a").eq(0).click();
+            cy.get(".MuiGrid-grid-xs-9").find("p").eq(0).contains(reviews[0].author);
+      });
     });
   });
