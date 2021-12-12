@@ -4,6 +4,7 @@ let images;
 let reviews;
 let person;
 let personId = 2524;
+let similars;
 
 
 describe("Movie Details Page", () => {
@@ -46,6 +47,15 @@ describe("Movie Details Page", () => {
             .then((response) => {
               person = response.results;
             });
+            cy.request(
+              `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${Cypress.env(
+                "TMDB_KEY"
+              )}`
+            )
+              .its("body")
+              .then((response) => {
+                similars = response.results;
+              });
   });
   beforeEach(() => {
     cy.visit(`/movies/${movie.id}`);
@@ -108,4 +118,13 @@ describe("Movie Details Page", () => {
             cy.get("ul").eq(2).contains('Hammersmith, London, England, UK');
           });
         });
+        describe("Viewing Movie's similar movie ", () => {
+          it("should display the movie's similar movie in an drawer", () => {
+            cy.get(".MuiGrid-container").find("button").click();
+            cy.get(".MuiDrawer-root").find("button").click();
+            cy.get(".MuiDrawer-root").find("button").last().click();
+            cy.get(".MuiTable-root").eq(2).find("tr").eq(1).contains(similars[0].title);
+        });
+      });
+
   });
