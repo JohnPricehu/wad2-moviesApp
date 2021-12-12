@@ -2,6 +2,7 @@ let movieId = 335983; // The movie Venom
 let movie;
 let images;
 let reviews;
+let actors;
 
 
 describe("Movie Details Page", () => {
@@ -33,9 +34,17 @@ describe("Movie Details Page", () => {
         )
           .its("body")
           .then((response) => {
-            // console.log(response);
             reviews = response.results;
           });
+          cy.request(
+            `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${Cypress.env(
+              "TMDB_KEY"
+            )}`
+          )
+            .its("body")
+            .then((response) => {
+              actors = response.results;
+            });
   });
   beforeEach(() => {
     cy.visit(`/movies/${movie.id}`);
@@ -73,10 +82,20 @@ describe("Movie Details Page", () => {
             cy.get(".MuiGrid-container").find("button").click();
             cy.get(".MuiTable-root").find("tr").contains(reviews[0].author);
     });
-      it("should display the full review details in a new page", () => {
+        it("should display the full review details in a new page", () => {
             cy.get(".MuiGrid-container").find("button").click();
             cy.get(".MuiTable-root").find("a").eq(0).click();
             cy.get(".MuiGrid-grid-xs-9").find("p").eq(0).contains(reviews[0].author);
       });
     });
+
+        describe("Viewing Movie Actors", () => {
+          it("should display the film actors in an drawer", () => {
+            cy.get(".MuiGrid-container").find("button").click();
+            cy.get(".MuiDrawer-root").find("button").click();
+            // actors.original_name
+            cy.get(".MuiTable-root").eq(1).find("tr").eq(1).contains('Tom Hardy');
+            cy.get(".MuiTable-root").eq(1).find("tr").eq(1).contains('actors.original_name');
+           });
+        });
   });

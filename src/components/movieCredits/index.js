@@ -67,10 +67,10 @@ export default function MovieCredits({ movie }) {
       <Table className={classes.table} aria-label="Credits table">
         <TableHead>
           <TableRow>
-            <TableCell >Image</TableCell>
+            <TableCell align="center">Image</TableCell>
             <TableCell align="center">Actor Name</TableCell>
             <TableCell align="center">Character Name</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell align="center">More</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -83,7 +83,7 @@ export default function MovieCredits({ movie }) {
                 />
               </TableCell>
               <TableCell >{c.name}</TableCell>
-              <TableCell >{excerpt(c.character)}</TableCell>
+              <TableCell >{c.character}</TableCell>
               <TableCell >
                 <Link
                   to={{
