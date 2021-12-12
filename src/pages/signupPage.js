@@ -1,18 +1,16 @@
 import React from 'react'
+import SignUpForm from '../components/signup'
 import { Container } from 'react-bootstrap'
 import AuthProvider from '../contexts/authContext'
-import LogInForm from '../components/login'
 
-export default function LogInPage() {
+export default function SignUpPage() {
     return (
-
         <AuthProvider>
-
         <Container className = "d-flex align-items-center justify-content-center" 
         style={ {minHeight: "100vh"}}
         >
             <div className = "w-100" style ={{maxWidth:"400px"}}>
-            <LogInForm/>
+            <SignUpForm/>
             </div>
         </Container>
         </AuthProvider>

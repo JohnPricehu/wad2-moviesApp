@@ -1,110 +1,63 @@
-import "./login.css";
-import React,{useState, useEffect} from "react";
-// Add the Firebase services that you want to use
-import fire from "../../firebase";
-import Login from "../../pages/LoginPage";
-import App from "../../index1";
-import { withRouter } from 'react-router-dom';
+import React ,{useRef ,useState}from 'react'
+import {Form,Button,Card, FormLabel, FormControl, Alert} from 'react-bootstrap'
+import {Link, useHistory} from "react-router-dom";
+import { signInWithEmailAndPassword } from "@firebase/auth"
+import { auth } from "../../firebase"
 
-export const LoginApp=() =>{
-    const [user,setUser]=useState("");
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const [emailError,setEmailError] = useState("");
-    const [passwordError,setPasswordError] = useState("");
-    const [hasAccount,setHasAccount] =  useState("false");
-    
-    const clearInputs =() =>{
-        setEmail('');
-        setPassword('');
+export default function LogInForm() {
+
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const [error,setError] = useState("")
+    const [loading,setLoading] = useState(false)
+    const history = useHistory()
+
+    async function handleSubmit(e){
+        e.preventDefault() //stop refresh
+
+        try{
+            setError("")
+            setLoading(true)
+            signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value)
+            history.push("/")
+        } catch{
+            setError('Sign in Failed')
+
+        }
+        setLoading(false)
     }
-    const clearErrors =() =>{
-        setEmailError('');
-        setPasswordError('');
-    }
 
-    const handleLogin =()=>{
-        clearErrors();
-        fire
-           .auth()
-           .signInWithEmailAndPassword(email,password)
-           .catch(
-                err=>{
-                  switch(err.code){
-                   case "auth/invalid-email":
-                   case "auth/user-disabled":
-                   case "auth/user-not-found":
-                      setEmailError(err.message);
-                      break;
-                   case "auth/wrong-password":
-                      setPasswordError(err.message);
-                      break;
-                   default:
-                        break;
-                  } 
-                });
-    };
 
-    const handleSignup =() =>{
-        clearErrors();
-        fire
-        .auth()
-        .createUserWithEmailAndPassword(email,password)
-        .catch(
-            err=>{
-               switch(err.code){
-                case "auth/email-already-in-use":
-                case "auth/invaild-email":
-                   setEmailError(err.message);
-                   break;
-                case "auth/weak-password":
-                   setPasswordError(err.message);
-                   break;
-                default:
-                    break;
-               } 
-            });
-    };
-    
-    const handleLogout =() =>{
-        fire.auth().signOut();
-    };
+    return (
+        <>
+        <Card>
+            <Card.Body>
+                <h2 className="text-center mb-4">Log In</h2>
 
-    const authListener = () => {
-        fire.auth().onAuthStateChanged((user)=>{
-            if (user){
-                clearInputs();
-                setUser(user);
-            }else{
-                setUser("");
-            }
-        });
-    };
+                {error && <Alert variant='danger'>{error}</Alert>}
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group id ="email">
+                        <FormLabel>Email</FormLabel>
+                        <FormControl type ="email" ref= {emailRef} required/>
+                    </Form.Group>
+                    <Form.Group id ="password">
+                        <FormLabel>Password</FormLabel>
+                        <FormControl type ="password" ref= {passwordRef} required/>
+                    </Form.Group>
 
-    useEffect(()=>{
-        authListener();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+                    <br/>
+                    <Button disabled= {loading} className="w-100" type ="submit">LogIn</Button>
+                </Form>
+            </Card.Body>
+        </Card>
 
-    return(
-        <div className = "App">
-            {user ? ( 
-              <App handleLogout={handleLogout}/>
-            ):(
-                <Login
-                email={email} 
-                setEmail ={setEmail} 
-                password ={password} 
-                setPassword ={setPassword}
-                handleLogin ={handleLogin}
-                handleSignup ={handleSignup}
-                hasAccount ={hasAccount}
-                setHasAccount={setHasAccount}
-                emailError = {emailError}
-                passwordError ={passwordError}
-                />
-            )}
+        <div className="w-100 text-center mt-2">
+            Do not have an account? <Link to="/signUp">Sign Up</Link>
         </div>
-    );
-};
-export default withRouter(LoginApp);
+        <div className="w-100 text-center mt-3">
+          <Link to="/ForgetPassword">Forget Password?</Link>
+        </div>
+
+        </>
+    )
+} 

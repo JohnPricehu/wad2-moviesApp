@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-
+import LoginIcon from '@material-ui/icons/Person';
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -34,7 +34,7 @@ const SiteHeader = ( { history }) => {
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "Now Playing", path: "/movies/now-playing" },
     { label: "Top Rated", path: "/movies/top-rated" },
-    // { label: "Login", path: "/movies/login" },
+    { label: <LoginIcon /> , path: "/signup" }
   ];
 
   const handleMenuSelect = (pageURL) => {

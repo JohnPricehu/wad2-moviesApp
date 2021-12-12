@@ -1,9 +1,12 @@
-import firebase from "firebase";
-require('firebase/auth');
-// must be listed before other Firebase SDKs
-require('firebase/app');
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {getAuth} from "firebase/auth"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDPmkQAwK9LcQym6EJiX0irEpPOmgl1t5U",
   authDomain: "movies-app-e298c.firebaseapp.com",
@@ -16,6 +19,6 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const fire = firebase.initializeApp(firebaseConfig);
-
-export default fire;
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export const auth = getAuth(app);
