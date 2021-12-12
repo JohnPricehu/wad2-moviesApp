@@ -22,7 +22,19 @@ describe("Userfile Page ", () => {
       cy.get('.card').find('strong').eq(0).contains(rightUsername)
       cy.get('.card').find('strong').eq(1).contains("2")
       cy.get('.card').find('strong').eq(2).contains("4")
-      cy.get('button').eq(8).click()
+      cy.get('button').eq(16).click()
     })
-
+    it("if user haven't login, he can not see his userfile", () => {
+        cy.get("button[aria-label='add to favorites']").eq(0).click({force: true});
+        cy.get("button[aria-label='add to favorites']").eq(1).click({force: true});
+        cy.get("header").find(".MuiToolbar-root").find("button").eq(1).click({force: true});
+        cy.get("button[aria-label='add towatch']").eq(0).click({force: true});
+        cy.get("button[aria-label='add towatch']").eq(1).click({force: true});
+        cy.get("button[aria-label='add towatch']").eq(3).click({force: true});
+        cy.get("button[aria-label='add towatch']").eq(5).click({force: true});
+        cy.get('button').eq(6).click()
+        cy.get('.card').find('strong').eq(0).contains("No user login now")
+        cy.get('.card').find('strong').eq(1).contains("Unkown")
+        cy.get('.card').find('strong').eq(2).contains("Unkown")
+    })
   });
