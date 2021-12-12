@@ -13,6 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { auth } from "../../firebase"
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -35,8 +36,10 @@ const SiteHeader = ( { history }) => {
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "Now Playing", path: "/movies/now-playing" },
     { label: "Top Rated", path: "/movies/top-rated" },
-    { label: <LoginIcon /> , path: "/login" },
     { label: <AccountBox /> , path: "/userfile" },
+    // if (!auth.currentUser) {
+      { label: <LoginIcon /> , path: "/login" }
+    // } 
   ];
 
   const handleMenuSelect = (pageURL) => {
