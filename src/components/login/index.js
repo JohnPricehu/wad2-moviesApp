@@ -17,14 +17,14 @@ export default function LogInForm() {
 
         try{
             setError("")
-            setLoading(true)
-            signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value)
+            setLoading(true);
+            await signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value);
             history.push("/")
-        } catch{
-            setError('Login Failed')
-
-        }
+        } catch(err) {
+            setError("Login Fail!")
+          }
         setLoading(false)
+
     }
 
 
@@ -44,10 +44,10 @@ export default function LogInForm() {
                         <FormLabel>Password</FormLabel>
                         <FormControl type ="password" ref= {passwordRef} required/>
                     </Form.Group>
-
                     <br/>
                     <Button disabled= {loading} className="w-100" type ="submit">Login</Button>
                 </Form>
+                
             </Card.Body>
         </Card>
 

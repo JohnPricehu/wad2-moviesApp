@@ -22,10 +22,10 @@ export default function SignUpForm() {
     try {
       setError("")
       setLoading(true)
-      createUserWithEmailAndPassword(auth,emailRef.current.value, passwordRef.current.value)
+      await createUserWithEmailAndPassword(auth,emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
-      setError("Failed to create an account")
+      setError("Sign up Fail!")
     }
 
     setLoading(false)
