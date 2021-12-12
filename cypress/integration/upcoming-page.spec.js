@@ -26,6 +26,22 @@ let reviews;
         cy.get("h3").contains("Upcoming Movies");
       });
     });
+
+    describe("Add to must watch", () => {
+        beforeEach(() => {
+          cy.get("#filled-search").clear({force: true});
+          cy.get("#genre-select").click({force: true});
+          cy.get("li").contains("All").click();
+          cy.get("button[aria-label='add towatch']").eq(0).click({force: true});
+          cy.get("button[aria-label='add towatch']").eq(1).click({force: true});
+        });
+        it("It should display an avatar at the top of the movie card and add it to the Must Watch movies page. ", () => {
+          cy.get(".MuiCardHeader-avatar");
+          cy.get("header").find(".MuiToolbar-root").find("button").eq(3).click({force: true});
+          cy.get("p").contains(movies[0].title);
+          cy.get("p").contains(movies[1].title);
+        });
+    });
 })
 
 
