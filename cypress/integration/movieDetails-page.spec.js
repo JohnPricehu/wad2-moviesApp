@@ -105,8 +105,8 @@ describe("Movie Details Page", () => {
             cy.get(".MuiGrid-container").find("button").click();
             cy.get(".MuiDrawer-root").find("button").click();
             // actors.original_name
-            cy.get(".MuiTable-root").eq(1).find("tr").eq(1).contains('Tom Hardy');
-            cy.get(".MuiTable-root").eq(1).find("tr").eq(1).contains('Eddie Brock / Venom');
+            cy.get(".MuiTable-root").eq(1).find("tr").contains('Tom Hardy');
+            cy.get(".MuiTable-root").eq(1).find("tr").contains('Eddie Brock / Venom');
            });
            it("should display the Movie Actor details in a new page", () => {
             cy.get(".MuiGrid-container").find("button").click();
@@ -123,7 +123,7 @@ describe("Movie Details Page", () => {
             cy.get(".MuiGrid-container").find("button").click();
             cy.get(".MuiDrawer-root").find("button").click();
             cy.get(".MuiDrawer-root").find("button").last().click();
-            cy.get(".MuiTable-root").eq(2).find("tr").eq(1).contains(similars[0].title);
+            cy.get(".MuiTable-root").eq(2).find("tr").contains(similars[0].title);
         });it("should display the movie's similar movie details in a new page", () => {
           cy.get(".MuiGrid-container").find("button").click();
           cy.get(".MuiDrawer-root").find("button").click();
