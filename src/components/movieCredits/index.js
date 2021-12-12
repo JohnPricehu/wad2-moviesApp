@@ -10,7 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { Link } from "react-router-dom";
 import { getMovieCredits } from "../../api/tmdb-api";
-import { excerpt } from "../../util";
+// import { excerpt } from "../../util";
 import MovieSimilars from "../movieSimilar";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";

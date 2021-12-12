@@ -2,7 +2,7 @@ let movieId = 335983; // The movie Venom
 let movie;
 let images;
 let reviews;
-let person;
+// let person;
 let personId = 2524;
 let similars;
 
@@ -38,15 +38,15 @@ describe("Movie Details Page", () => {
           .then((response) => {
             reviews = response.results;
           });
-          cy.request(
-            `https://api.themoviedb.org/3/person/${personId}/credits?api_key=${Cypress.env(
-              "TMDB_KEY"
-            )}`
-          )
-            .its("body")
-            .then((response) => {
-              person = response.results;
-            });
+          // cy.request(
+          //   `https://api.themoviedb.org/3/person/${personId}/credits?api_key=${Cypress.env(
+          //     "TMDB_KEY"
+          //   )}`
+          // )
+          //   .its("body")
+          //   .then((response) => {
+          //     person = response.results;
+          //   });
             cy.request(
               `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${Cypress.env(
                 "TMDB_KEY"

@@ -1,6 +1,7 @@
 import React , {useContext,useState, useEffect}from 'react'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 
+
 const AuthContext = React.createContext();
 const auth=getAuth()
 export function useAuth(){
@@ -12,13 +13,13 @@ export default function AuthProvider({children}) {
     const [loading,setLoading] = useState(false)
 
     function signUp(email,password){
-        return createUserWithEmailAndPassword(auth,email,password) .then((userCredential) => {
+        return createUserWithEmailAndPassword(auth,email,password).then((userCredential) => {
 
-            const user = userCredential.user;
+            // const user = userCredential.user;
 
           })
           .catch((error) => {
-            const errorCode = error.code;
+            // const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage)
 
@@ -28,12 +29,12 @@ export default function AuthProvider({children}) {
     function logIn(email,password){
 
 
-        return signInWithEmailAndPassword(auth,email,password) .then((userCredential) => {
+        return signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
 
-            const user = userCredential.user;
+            // const user = userCredential.user;
           })
           .catch((error) => {
-            const errorCode = error.code;
+            // const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage)
           });

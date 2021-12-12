@@ -1,6 +1,6 @@
 let movies;
-const movieId =  335983; // The movie Venom id
-let reviews;
+// const movieId =  335983; // The movie Venom id
+// let reviews;
 
 describe("Navigation", () => {
   before(() => {
@@ -14,16 +14,16 @@ describe("Navigation", () => {
         movies = response.results;
       });
     // Get movie reviews
-    cy.request(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${Cypress.env(
-        "TMDB_KEY"
-      )}`
-    )
-      .its("body")
-      .then((response) => {
-        // console.log(response);
-        reviews = response.results;
-      });
+    // cy.request(
+    //   `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${Cypress.env(
+    //     "TMDB_KEY"
+    //   )}`
+    // )
+    //   .its("body")
+    //   .then((response) => {
+    //     // console.log(response);
+    //     reviews = response.results;
+    //   });
   });
   beforeEach(() => {
     cy.visit("/");

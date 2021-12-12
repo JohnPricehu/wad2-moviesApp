@@ -13,7 +13,7 @@ import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { auth } from "../../firebase"
+// import { auth } from "../../firebase"
 
 const useStyles = makeStyles((theme) => ({
   title: {
