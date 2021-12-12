@@ -1,6 +1,6 @@
 import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
-import Userfile from "../components/userfile"
+import Userfile from "../../src/components/userfile"
 import SiteHeader from "../components/siteHeader"
 
 const userFilePage = (props) => {
