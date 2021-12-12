@@ -124,7 +124,13 @@ describe("Movie Details Page", () => {
             cy.get(".MuiDrawer-root").find("button").click();
             cy.get(".MuiDrawer-root").find("button").last().click();
             cy.get(".MuiTable-root").eq(2).find("tr").eq(1).contains(similars[0].title);
-        });
+        });it("should display the movie's similar movie details in a new page", () => {
+          cy.get(".MuiGrid-container").find("button").click();
+          cy.get(".MuiDrawer-root").find("button").click();
+          cy.get(".MuiDrawer-root").find("button").last().click();
+          cy.get(".MuiTable-root").eq(2).find("a").eq(0).click();
+          cy.url().should("include", `/movies/${similars[0].id}`);
+      });
       });
 
   });
