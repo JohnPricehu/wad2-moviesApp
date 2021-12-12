@@ -18,6 +18,11 @@ export default function LogOut() {
       setError("Failed to log out")
     }
   }
+  const currentUserEmail = "No user login now";
+
+  if (auth.currentUser) {
+      currentUserEmail = auth.currentUser.email
+  }
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function LogOut() {
         <Card.Body>
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {auth.currentUser.email} 
+          <strong>Email:{currentUserEmail}</strong> 
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

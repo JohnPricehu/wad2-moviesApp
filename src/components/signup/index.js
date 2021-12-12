@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom"
 import { createUserWithEmailAndPassword } from "@firebase/auth"
 import { auth } from "../../firebase"
 
-export default function Signup() {
+export default function SignUpForm() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
