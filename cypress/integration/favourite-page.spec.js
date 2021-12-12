@@ -1,16 +1,5 @@
 let movies;    // List of movies from TMDB
 
-// Utility functions
-const filterByTitle = (movieList, string) =>
-    movieList.filter((m) => m.title.toLowerCase().search(string) !== -1);
-
-const filterByGenre = (movieList, genreId) =>
-    movieList.filter((m) => m.genre_ids.includes(genreId));
-
-const filterByTitleAndGenre =(moveList,string,genreId)=>
-    moveList.filter((m)=> m.title.toLowerCase().search(string) !== -1 && m.genre_ids.includes(genreId));
-
-
 describe("Favourite Page", () => {
     before(() => {
         // Get movies from TMDB and store in movies variable.
@@ -49,6 +38,15 @@ describe("Favourite Page", () => {
         });
       });
 
-
+      describe("Add to write-review button test", () => {
+        it("should get to the write review page", () => {
+            cy.get("button[aria-label='add to favorites']").eq(0).click({force: true});
+            cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
+            cy.get(".MuiCardHeader-content").eq(0).find("p").contains(movies[0].title)
+            cy.get(".MuiCardActions-root").eq(0).find('a').eq(0).click();
+            cy.contains("Write a review").click({force: true});
+            cy.url().should("include", `/reviews/form`);
+        });
+    })
 
 })
