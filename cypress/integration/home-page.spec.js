@@ -117,7 +117,7 @@ describe("Base test", () => {
       cy.get("button[aria-label='add to favorites']").eq(0).click({force: true});
       cy.get("button[aria-label='add to favorites']").eq(1).click({force: true});
     });
-    it("It should display an avatar at the top of the movie card and add it to the Favourite movies page. ", () => {
+    it("It should display an avatar at the top of the movie card and add it to the Favourite movies page.", () => {
       cy.get(".MuiCardHeader-avatar");
       cy.get("header").find(".MuiToolbar-root").find("button").eq(2).click();
       cy.get("p").contains(movies[0].title);

@@ -1,7 +1,8 @@
 let movieId = 335983; // The movie Venom
 let movie;
 let images;
-// let reviews;
+let reviews;
+
 
 describe("Movie Details Page", () => {
   before(() => {
@@ -25,6 +26,16 @@ describe("Movie Details Page", () => {
           images = movieImages;
           return movieImages.id;
         });
+        cy.request(
+          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${Cypress.env(
+            "TMDB_KEY"
+          )}`
+        )
+          .its("body")
+          .then((response) => {
+            // console.log(response);
+            reviews = response.results;
+          });
   });
   beforeEach(() => {
     cy.visit(`/movies/${movie.id}`);
@@ -57,4 +68,11 @@ describe("Movie Details Page", () => {
           });
       });
       });
+      describe("Viewing Movie Reviews", () => {
+        it("should display the moviereviews in an drawer", () => {
+            cy.get(".MuiGrid-container").find("button").click();
+            cy.get(".MuiTable-root").find("tr").contains(reviews[0].author);
     });
+    
+    });
+  });

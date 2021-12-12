@@ -1,7 +1,5 @@
 let movies;
-const movieId =  585245;
 // const movieTitle = 'Clifford the Big Red Dog' 
-let reviews;
 
   describe("Upcoming Page ", () => {
     before(() => {
