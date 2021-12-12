@@ -5,9 +5,7 @@ import LogInForm from '../components/login'
 
 export default function LogInPage() {
     return (
-
         <AuthProvider>
-
         <Container className = "d-flex align-items-center justify-content-center" 
         style={ {minHeight: "100vh"}}
         >

@@ -15,9 +15,10 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MustwatchMoviesPage from "./pages/mustWatchMoviesPage"; 
 import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
-// import AuthProvider from "./contexts/authContext";
 import SignUpPage from "./pages/signupPage";
 import LogInPage from "./pages/loginPage";
+import LogOutPage from "./pages/logoutPage";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 
@@ -40,10 +41,10 @@ export const App =()=>{
         <SiteHeader />
         <MoviesContextProvider>
             {" "}
-      {/* <AuthProvider> */}
       <Switch>
-        <Route exact path="/signUp" component={SignUpPage} />
-        <Route exact path="/logIn" component={LogInPage} />
+        <Route path="/account" component={LogOutPage} />
+        <Route exact path="/signup" component={SignUpPage} />
+        <Route exact path="/login" component={LogInPage} />
         <Route exact path="/movies/top-rated" component={TopRatedMoviesPage} />
         <Route exact path="/movies/now-playing" component={NowPlayingMoviesPage} />
         <Route exact path="/movies/mustwatch" component={MustwatchMoviesPage} />
@@ -56,7 +57,6 @@ export const App =()=>{
         <Route exact path="/" component={HomePage} />
         <Redirect from="*" to="/" />
       </Switch>
-      {/* </AuthProvider> */}
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

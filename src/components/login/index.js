@@ -21,7 +21,7 @@ export default function LogInForm() {
             signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value)
             history.push("/")
         } catch{
-            setError('Sign in Failed')
+            setError('Login Failed')
 
         }
         setLoading(false)
@@ -32,7 +32,7 @@ export default function LogInForm() {
         <>
         <Card>
             <Card.Body>
-                <h2 className="text-center mb-4">Log In</h2>
+                <h2 className="text-center mb-4">TMDB Login</h2>
 
                 {error && <Alert variant='danger'>{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
@@ -46,16 +46,13 @@ export default function LogInForm() {
                     </Form.Group>
 
                     <br/>
-                    <Button disabled= {loading} className="w-100" type ="submit">LogIn</Button>
+                    <Button disabled= {loading} className="w-100" type ="submit">Login</Button>
                 </Form>
             </Card.Body>
         </Card>
 
         <div className="w-100 text-center mt-2">
             Do not have an account? <Link to="/signUp">Sign Up</Link>
-        </div>
-        <div className="w-100 text-center mt-3">
-          <Link to="/ForgetPassword">Forget Password?</Link>
         </div>
 
         </>
