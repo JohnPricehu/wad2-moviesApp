@@ -19,9 +19,9 @@ A film data platform connected to TMDB API that has been independently developed
 
 This project needs the following commands:
 
-npm install firebase
-npm install bootstrap
-npm install react-bootstrap
++ npm install firebase
++ npm install bootstrap
++ npm install react-bootstrap
 
 
 ## API endpoints.
@@ -38,7 +38,7 @@ npm install react-bootstrap
 
 Since I added the details page of the movie actors, I created the personDetail and personHeader files in the storybook.
 
-![ ](./images/new storybook.png)
+![ ](./images/newstorybook.png)
 
 ### UI Design.
 
@@ -104,4 +104,33 @@ Since I added the details page of the movie actors, I created the personDetail a
 
 REFERENCE:https://firebase.google.com/docs/auth?authuser=0
 https://www.youtube.com/watch?v=9zdvmgGsww0&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb
+
+# Assignment 1 - Agile Software Practice.
+## Overview.
+
+Test the ReactJS app project
+
+## E2E Testing.
+
+![ ](./images/E2Etest.png)
+
++ Headless mode
+
+![ ](./images/headlessmode.png)
+
+## CI/CD
+
+![ ](./images/gitlab.png)
+
++ gitlab:https://gitlab.com/JohnPricehu/moviesapp-ci/-/pipelines
+
+## Bundling & Code Splitting
+
++ App Bundling
+
+![ ](./images/bundling.png)
+
++ Route-based Code Splitting
+
+![ ](./images/Splitting.png)
 

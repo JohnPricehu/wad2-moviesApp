@@ -22,12 +22,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 const HomePage = lazy(() => import("./pages/homePage"));
 const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
-// const PersonPage = lazy(() => import("./pages/personDetailsPage"));
 const UpcomingMoviesPage = lazy(() => import("./pages/upcomingMoviesPage"));
 const FavoriteMoviesPage = lazy(() => import("./pages/favoriteMoviesPage"));
 const MovieReviewPage = lazy(() => import("./pages/movieReviewPage"));
-// const SiteHeader = lazy(() => import("./components/siteHeader"));
-// const MoviesContextProvider = lazy(() => import("./contexts/moviesContext"));
 const AddMovieReviewPage = lazy(() => import("./pages/addMovieReviewPage"));
 const MustwatchMoviesPage = lazy(() => import("./pages/mustWatchMoviesPage"));
 const NowPlayingMoviesPage = lazy(() => import("./pages/nowPlayingMoviesPage"));
