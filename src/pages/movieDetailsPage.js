@@ -1,4 +1,4 @@
-import React from "react";
+import {React,lazy} from "react";
 import { withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
@@ -6,6 +6,10 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
+// const Spinner = lazy(() => import("../components/spinner"));
+// const PageTemplate = lazy(() => import("../components/templateMoviePage"));
+// const MovieDetails = lazy(() => import("../components/movieDetails"));
+
 
 const MovieDetailsPage = (props) => {
   const { id } = props.match.params

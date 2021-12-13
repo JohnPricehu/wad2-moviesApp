@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {lazy, useContext } from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
@@ -6,6 +6,12 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
+// const WriteReview = lazy(() => import("../components/cardIcons/writeReview"));
+// const RemoveFromFavorites = lazy(() => import("../components/cardIcons/removeFromFavorites"));
+// const Spinner = lazy(() => import("../components/spinner"));
+// const MoviesContext = lazy(() => import("../contexts/moviesContext"));
+// const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
+
 
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);

@@ -1,9 +1,13 @@
-import React from "react";
+import {React,lazy} from "react";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getUpcomingMovies} from '../api/tmdb-api'
 import AddToPlaylistAddIcon from '../components/cardIcons/addToWatch'
+// const Spinner = lazy(() => import("../components/spinner"));
+// const PageTemplate = lazy(() => import("../components/templateMoviePage"));
+// const AddToPlaylistAddIcon = lazy(() => import("../components/cardIcons/addToWatch"));
+
 
 const UpcomingMoviesPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('discover2', getUpcomingMovies)

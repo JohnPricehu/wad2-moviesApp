@@ -1,24 +1,40 @@
-import React from "react";
+import {React,lazy,Suspense} from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import HomePage from "./pages/homePage";
-import MoviePage from "./pages/movieDetailsPage";
+// import HomePage from "./pages/homePage";
+// import MoviePage from "./pages/movieDetailsPage";
 import PersonPage from "./pages/personDetailsPage";
-import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
-import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
-import MovieReviewPage from "./pages/movieReviewPage";
+// import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
+// import FavoriteMoviesPage from "./pages/favoriteMoviesPage"; // NEW
+// import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage';
-import MustwatchMoviesPage from "./pages/mustWatchMoviesPage"; 
-import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
-import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
+// import AddMovieReviewPage from './pages/addMovieReviewPage';
+// import MustwatchMoviesPage from "./pages/mustWatchMoviesPage"; 
+// import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
+// import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
 import SignUpPage from "./pages/signupPage";
 import LogInPage from "./pages/loginPage";
 import UserFilePage from "./pages/userFilePage";
 import "bootstrap/dist/css/bootstrap.min.css"
+
+const HomePage = lazy(() => import("./pages/homePage"));
+const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
+// const PersonPage = lazy(() => import("./pages/personDetailsPage"));
+const UpcomingMoviesPage = lazy(() => import("./pages/upcomingMoviesPage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/favoriteMoviesPage"));
+const MovieReviewPage = lazy(() => import("./pages/movieReviewPage"));
+// const SiteHeader = lazy(() => import("./components/siteHeader"));
+// const MoviesContextProvider = lazy(() => import("./contexts/moviesContext"));
+const AddMovieReviewPage = lazy(() => import("./pages/addMovieReviewPage"));
+const MustwatchMoviesPage = lazy(() => import("./pages/mustWatchMoviesPage"));
+const NowPlayingMoviesPage = lazy(() => import("./pages/nowPlayingMoviesPage"));
+const TopRatedMoviesPage = lazy(() => import("./pages/topRatedMoviesPage"));
+
+
+
 
 
 
@@ -38,9 +54,12 @@ export const App =()=>{
   return(       
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <Suspense fallback={<h1>Loading page</h1>}>
         <SiteHeader />
+        </Suspense>
         <MoviesContextProvider>
             {" "}
+            <Suspense fallback={<h1>Loading page</h1>}>
       <Switch>
         <Route path="/userfile" component={UserFilePage} />
         <Route exact path="/signup" component={SignUpPage} />
@@ -57,7 +76,9 @@ export const App =()=>{
         <Route exact path="/" component={HomePage} />
         <Redirect from="*" to="/" />
       </Switch>
+      </Suspense>
         </MoviesContextProvider>
+        
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
