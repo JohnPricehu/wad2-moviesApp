@@ -1,9 +1,9 @@
 import {React,lazy} from 'react'
 import { Container } from 'react-bootstrap'
-import AuthProvider from '../../src/contexts/authContext'
-import LogInForm from '../../src/components/login'
-// const AuthProvider = lazy(() => import("../../src/contexts/authContext"));
-// const LogInForm = lazy(() => import("../../src/components/login"));
+// import AuthProvider from '../../src/contexts/authContext'
+// import LogInForm from '../../src/components/login'
+const AuthProvider = lazy(() => import("../../src/contexts/authContext"));
+const LogInForm = lazy(() => import("../../src/components/login"));
 
 export default function LogInPage() {
     return (

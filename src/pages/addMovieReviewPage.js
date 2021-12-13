@@ -1,13 +1,13 @@
-import {React,lazy} from "react";
-// import PageTemplate from "../components/templateMoviePage";
-// import ReviewForm from "../components/reviewForm";
+import {React} from "react";
+import PageTemplate from "../components/templateMoviePage";
+import ReviewForm from "../components/reviewForm";
 import { withRouter } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovie } from "../api/tmdb-api";
-// import Spinner from "../components/spinner";
-const Spinner = lazy(() => import("../components/spinner"));
-const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
-const ReviewForm = lazy(() => import("../components/reviewForm"));
+import Spinner from "../components/spinner";
+// const Spinner = lazy(() => import("../components/spinner"));
+// const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
+// const ReviewForm = lazy(() => import("../components/reviewForm"));
 
 const WriteReviewPage = (props) => {
   const { movieId } = props.location.state;

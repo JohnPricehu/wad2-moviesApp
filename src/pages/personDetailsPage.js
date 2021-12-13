@@ -1,4 +1,4 @@
-import {React,lazy} from "react";
+import {React} from "react";
 import { withRouter } from "react-router-dom";
 import PersonDetails from "../components/personDetails";
 import PageTemplate from "../components/templatePersonPage";
