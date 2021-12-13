@@ -38,7 +38,7 @@ npm install react-bootstrap
 
 Since I added the details page of the movie actors, I created the personDetail and personHeader files in the storybook.
 
-![](./images/new storybook.png)
+![ ](./images/new storybook.png)
 
 ### UI Design.
 
