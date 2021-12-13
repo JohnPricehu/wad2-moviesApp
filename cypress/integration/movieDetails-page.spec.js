@@ -91,7 +91,7 @@ describe("Movie Details Page", () => {
       describe("Viewing Movie Reviews", () => {
         it("should display the moviereviews in an drawer", () => {
             cy.get(".MuiGrid-container").find("button").click();
-            cy.get(".MuiTable-root").eq(0).find("tr").contains(reviews[0].author);
+            cy.get(".MuiTable-root").eq(0).find(".MuiTableBody-root").eq(0).find("th").eq(0).contains(reviews[0].author);
     });
         it("should display the full review details in a new page", () => {
             cy.get(".MuiGrid-container").find("button").click();
